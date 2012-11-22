@@ -1,14 +1,15 @@
 #前端开发编码规范
 
 ##目录
-
-1. [编码规范](#编码规范) 
+1. [目录](#目录)
+2. [编码规范](#编码规范) 
     1. [JavaScript](#javascript)
         - [语言规范](#语言规范)
         - [编码风格](#编码风格)
     2. [HTML](#html)
-    3. [CSS](#css)  
-2. [Code Review Check List](#code-review-checklist)  
+    3. [CSS](#css)
+  
+3. [Code Review Check List](#code-review-checklist)  
     1. [JavaScript](#javascript)
     2. [HTML](#html)
     3. [CSS](#css)  
@@ -27,13 +28,13 @@
 
 使用大写字符，用下划线分隔，例如：`NAME_LIKE_THIS`；  
 推荐使用这样的常量明明模式：`<常量类型>_<适用场景>_<具体作用>`，例如：  
-    
-	```javascript
-	// 正则表达式_它用来 match 字符串_match email的
-	var
-	    REGEX_MATCHER_EMAIL = /```./,
-	    STR_WHITESPACE = " ";    // fill，优先级，规范/建议，作用域的不同要求 -> 
-	```
+
+```javascript
+// 正则表达式_它用来 match 字符串_match email的
+var
+    REGEX_MATCHER_EMAIL = /```./,
+    STR_WHITESPACE = " ";    // fill，优先级，规范/建议，作用域的不同要求 -> 
+```
 
 #####分号
 
@@ -51,19 +52,19 @@
 
 不能在一个块内声明一个函数。不能写成：
 
-	```javascript
-	if (x) {
-	    function foo() {}
-	}
-	```
+```javascript
+if (x) {
+    function foo() {}
+}
+```
 
 如果确实需要在块中定义函数, 建议使用函数表达式来初始化变量:
 
-	```javascript
-	if (x) {
-	    var foo = function() {}
-	}
-	```
+```javascript
+if (x) {
+    var foo = function() {}
+}
+```
 #####异常
 
 可以使用异常
@@ -80,43 +81,45 @@
 
 完全没必要对基础类型进行分装，有可能会引起问题：
 
-    ```javascript
-    var x = new Boolean(false);
-    if (x) {
-        alert('hi'); // Shows 'hi'.
-    }
-    ```
+```javascript
+var x = new Boolean(false);
+if (x) {
+    alert('hi'); // Shows 'hi'.
+}
+```
 可以用于类型转换：
 
-    ```javascript
-    var x = Boolean(0);
-    if (x) {
-        alert('hi'); // This will never be alerted.
-    }
-    typeof Boolean(0) == 'boolean';
-    typeof new Boolean(0) == 'object';
-    ```
+```javascript
+var x = Boolean(0);
+if (x) {
+    alert('hi'); // This will never be alerted.
+}
+typeof Boolean(0) == 'boolean';
+typeof new Boolean(0) == 'object';
+```
 #####闭包
 
 可以使用，但要小心。下面的代码会造成内存泄漏：
-    ```javascript
-    function foo(element, a, b) {
-        element.onclick = function () { /* uses a and b */
-        };
-    }
-    ```
+
+```javascript
+function foo(element, a, b) {
+    element.onclick = function () { /* uses a and b */
+    };
+}
+```
+
 尽管闭包没有使用`element`，但还是保留了对`element`、`a`、`b`的引用，同时`element`也引用了闭包，这就造成了循环引用，造成内存泄漏。可以将代码重构为：
 
-    ```javascript
-    function foo(element, a, b) {
-        element.onclick = bar(a, b);
+```javascript
+function foo(element, a, b) {
+    element.onclick = bar(a, b);
+}
+
+function bar(a, b) {
+    return function () { /* uses a and b */
     }
-    
-    function bar(a, b) {
-        return function () { /* uses a and b */
-        }
-    }
-    ```
+}
+```
 #####eval
 
 只用于解析序列化字符串，处理XHR等从服务端请求得到的返回值
@@ -132,39 +135,40 @@
 #####for-in迭代
 
 只使用`for-in`来迭代`Object`，即所谓的`Map`或者`Hash`。用来迭代`Array`有时候会有问题：
-    ```javascript
-    function printArray(arr) {
-        for (var key in arr) {
-            console.log(arr[key]);
-        }
+
+```javascript
+function printArray(arr) {
+    for (var key in arr) {
+        console.log(arr[key]);
     }
-    
-    printArray([0, 1, 2, 3]); // This works.
-    
-    var a = new Array(10);
-    printArray(a); // This is wrong.
-    
-    a = document.getElementsByTagName('*');
-    printArray(a); // This is wrong.
-    
-    a = [0, 1, 2, 3];
-    a.buhu = 'wine';
-    printArray(a); // This is wrong again.
-    
-    a = new Array;
-    a[3] = 3;
-    printArray(a); // This is wrong again.
-    ```
+}
+
+printArray([0, 1, 2, 3]); // This works.
+
+var a = new Array(10);
+printArray(a); // This is wrong.
+
+a = document.getElementsByTagName('*');
+printArray(a); // This is wrong.
+
+a = [0, 1, 2, 3];
+a.buhu = 'wine';
+printArray(a); // This is wrong again.
+
+a = new Array;
+a[3] = 3;
+printArray(a); // This is wrong again.
+```
 使用普通的`for`循环来迭代数组：
 
-    ```javascript
-    function printArray(arr) {
-        var l = arr.length;
-        for (var i = 0; i < l; i++) {
-            print(arr[i]);
-        }
+```javascript
+function printArray(arr) {
+    var l = arr.length;
+    for (var i = 0; i < l; i++) {
+        print(arr[i]);
     }
-    ```
+}
+```
 
 #####关联数组
 
@@ -174,14 +178,14 @@
 
 不允许像下面这边书写多行字符串，非`ECMAScript`规范：
 
-    ```javascript
-    var myString = 'A rather long string of English text, an error message \
-                    actually that just keeps going and going -- an error \
-                    message to make the Energizer bunny blush (right through \
-                    those Schwarzenegger shades)! Where was I? Oh yes, \
-                    you\'ve got an error and all the extraneous whitespace is \
-                    just gravy.  Have a nice day.';
-    ```
+```javascript
+var myString = 'A rather long string of English text, an error message \
+                actually that just keeps going and going -- an error \
+                message to make the Energizer bunny blush (right through \
+                those Schwarzenegger shades)! Where was I? Oh yes, \
+                you\'ve got an error and all the extraneous whitespace is \
+                just gravy.  Have a nice day.';
+```
 
 #####内置对象原型
 
@@ -191,11 +195,11 @@
 
 不允许使用如下的写法：
 
-    ```javascript
-    var f = function () {
-        /*@cc_on if (@_jscript) { return 2* @*/ 3; /*@ } @*/
-    };
-    ```
+```javascript
+var f = function () {
+    /*@cc_on if (@_jscript) { return 2* @*/ 3; /*@ } @*/
+};
+```
 
 ####编码风格
 
