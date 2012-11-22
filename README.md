@@ -2,13 +2,16 @@
 
 ##目录
 
-1. [编码规范](#编码规范)  
-    1. [JavaScript](#javascript)  
-        - [语言规范](#语言规范)  
-        - [编码风格](#编码风格)  
-    2. [HTML](#html)  
+1. [编码规范](#编码规范) 
+    1. [JavaScript](#javascript)
+        - [语言规范](#语言规范)
+        - [编码风格](#编码风格)
+    2. [HTML](#html)
     3. [CSS](#css)  
 2. [Code Review Check List](#code-review-checklist)  
+    1. [JavaScript](#javascript)
+    2. [HTML](#html)
+    3. [CSS](#css)  
 
 ##编码规范
 
