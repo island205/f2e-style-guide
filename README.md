@@ -225,9 +225,14 @@ var f = function () {
 
 #####缩进
 
-缩进的最小单位是4个空格，尽量不要使用tab，因为tab目前的标准还不统一，不同编辑器的空格数是不同的。如果你习惯了tab，请将你的编辑器tab键的默认设置设为4个空格。
+- 缩进的最小单位是4个空格，尽量不要使用tab，因为tab目前的标准还不统一，不同编辑器的空格数是不同的。如果你习惯了tab，请将你的编辑器tab键的默认设置设为4个空格。
 
 #####注释
+
+- [backbone](https://github.com/documentcloud/backbone/blob/master/backbone.js) [docco](https://github.com/jashkenas/docco)
+- [JSDoc](http://code.google.com/p/jsdoc-toolkit/)
+- [YUIDoc](http://yui.github.com/yuidoc/syntax/index.html)
+- .....
 
 #####代码风格
 
