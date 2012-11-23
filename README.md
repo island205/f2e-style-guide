@@ -13,6 +13,7 @@
     1. [JavaScript](#javascript)
     2. [HTML](#html)
     3. [CSS](#css)  
+4. [参考](#参考)
 
 ##编码规范
 
@@ -379,9 +380,38 @@ var hoo = {
 
 
 ###HTML
+
 ###CSS
 
 ##Code Review CheckList
+
 ###JavaScript
+
+<table>
+    <tr>
+        <td>内容</td>
+        <td>分数</td>
+    </tr>
+    <tr>
+        <td>正确的缩进，最小缩进单位为4个空格</td>
+        <td style="color:red">-1</td>
+    </tr>
+    <tr>
+        <td>所有条件区域必须用花括号括起来</td>
+        <td style="color:red">-2</td>
+    </tr>
+    <tr>
+        <td>方法、变量都使用驼峰命名，类使用大驼峰(Pascal)命名</td>
+        <td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>按库中的js模板书写js</td>
+        <td style="color:green">+10</td>
+    </tr>
+
+</table>
+
 ###HTML
 ###CSS
+
+##参考
