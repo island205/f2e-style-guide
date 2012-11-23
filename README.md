@@ -10,9 +10,9 @@
     3. [CSS](#css)
   
 3. [Code Review Check List](#code-review-checklist)  
-    1. [JavaScript](#javascript)
-    2. [HTML](#html)
-    3. [CSS](#css)  
+    1. [JavaScript List](#javascript-list)
+    2. [HTML List](#html-list)
+    3. [CSS List](#css-list)  
 4. [参考](#参考)
 
 ##编码规范
@@ -385,8 +385,7 @@ var hoo = {
 
 ##Code Review CheckList
 
-###JavaScript
-
+###JavaScript List
 <table>
     <tr>
         <td>内容</td>
@@ -408,10 +407,9 @@ var hoo = {
         <td>按库中的js模板书写js</td>
         <td style="color:green">+10</td>
     </tr>
-
 </table>
 
-###HTML
-###CSS
+###HTML List
+###CSS List
 
 ##参考
