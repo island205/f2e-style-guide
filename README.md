@@ -202,6 +202,10 @@ var f = function () {
 };
 ```
 
+#####Ajax
+
+- 使用Ajax，必须指明是`HTTP`使用`GET`，`POST`，如果使用`GET`，必须指明是否需要`cache`。
+
 ####编码风格
 
 #####命名
@@ -209,6 +213,7 @@ var f = function () {
 - 常见的命名方式：`functionNamesLikeThis`, `variableNamesLikeThis`, `ClassNamesLikeThis`, `EnumNamesLikeThis`, `methodNamesLikeThis`和`SYMBOLIC_CONSTANTS_LIKE_THIS`。
 - 私有的属性、变量或者方法以“`_`”开头
 - 文件的命名包括小写字母、`-`、`_`（不能包含其他字符，且`-`优于`_`），使用`.js`结尾。
+- 不能使用拼音。
 
 #####字符串
 
@@ -381,8 +386,241 @@ var hoo = {
 
 ###HTML
 
+####语言规范
+
+#####语义化
+
+- 编写语义化的代码：
+
+```html
+<!-- Not recommended -->
+<div onclick="goToRecommendations();">All recommendations</div>
+
+<!-- Recommended -->
+<a href="recommendations/">All recommendations</a>
+```
+
+#####结构、表现和行为分离
+
+#####alt
+
+- 提供媒体文件（`img`等）的替代`alt`：
+
+```html
+<!-- Not recommended -->
+<img src="spreadsheet.png">
+
+<!-- Recommended -->
+<img src="spreadsheet.png" alt="Spreadsheet screenshot.">
+```
+
+#####type属性
+
+- 可以省略`style`和`script`的`type`（HTML5已经把`text/css`和`text/javascript`作为默认值）。
+
+```html
+<!-- Not recommended -->
+<link rel="stylesheet" href="//www.google.com/css/maia.css" type="text/css">
+
+<!-- Recommended -->
+<link rel="stylesheet" href="//www.google.com/css/maia.css">
+<!-- Not recommended -->
+
+<script src="//www.google.com/js/gweb/analytics/autotrack.js" type="text/javascript"></script>
+
+<!-- Recommended -->
+<script src="//www.google.com/js/gweb/analytics/autotrack.js"></script>
+```
+
+#####DOCTYPE
+
+- 使用`HTML5`，即`<!DOCTYPE html>`，且必须出现在在`HTML`文档的最顶端。
+
+#####button标记
+
+- 不推荐使用`<button></button>`标记，要使用必须标明`button`的类型`type="button"`或者`type="submit"`。
+
+#####Protocol
+
+- 省略嵌入式资源的`Protocol`（建议）
+
+```html
+<!-- Not recommended --> 
+<script src = "http://www.google.com/js/gweb/analytics/autotrack.js" > < /script> 
+<!-- Recommended --> 
+<script src="//www.google.com/js/gweb/analytics /autotrack.js"></script>
+```
+
+#####Meta 规则
+
+- 编码：`<meta charset="utf-8" />`
+
+####编码风格
+
+#####格式化
+
+- 新的`block`、`list`、`table`元素都新起一行，缩进每一个子元素，例如：
+
+```html
+<blockquote>
+  <p><em>Space</em>, the final frontier.</p>
+</blockquote>
+
+<ul>
+  <li>Moe </li>
+  <li>Larry </li>
+  <li>Curly </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Income </th>
+      <th scope="col">Taxes </th>
+  <tbody>
+    <tr>
+      <td>$ 5.00</tr>
+      <td>$ 4.50</tr>
+</table>
+```
+#####缩进
+
+- 缩进的最小单位是4个空格，尽量不要使用tab，因为tab目前的标准还不统一，不同编辑器的空格数是不同的。如果你习惯了tab，请将你的编辑器tab键的默认设置设为4个空格。
+
+
+#####大小写
+
+- 必须采用小写。
+
+#####双引号
+
+- 使用双引号`"`包裹属性值。
+
 ###CSS
 
+####语言规范
+
+#####类型选择符
+
+- 若无必要，不要把元素名与ID或者class连在一起使用：
+```css
+/* Not recommended */
+ul#example {}
+div.error {}
+
+/* Recommended */
+#example {}
+.error {}
+```
+
+####编码风格
+
+#####class 和 ID
+
+- 使用短横线`-`链接单词：
+
+```css
+/* Not recommended: does not separate the words “demo” and “image” */
+.demoimage {}
+
+/* Not recommended: uses underscore instead of hyphen */
+.error_status {}
+/* Recommended */
+#video-id {}
+.ads-sample {}
+```
+
+- 说明元素的功能或者作用；
+
+```css
+/* Not recommended: meaningless */
+#yee-1901 {}
+
+/* Not recommended: presentational */
+.button-green {}
+.clear {}
+/* Recommended: specific */
+#gallery {}
+#login {}
+.video {}
+
+/* Recommended: generic */
+.aux {}
+.alt {}
+```
+- 在能够表达清楚功能或者作用的前提下，名称越短越好：
+
+```css
+/* Not recommended */
+#navigation {}
+.atr {}
+
+/* Recommended */
+#nav {}
+.author {}
+```
+
+#####属性
+
+- 只要可能，尽量简写（高效且易于理解）：
+
+```css
+/* Not recommended */
+border-top-style: none;
+font-family: palatino, georgia, serif;
+font-size: 100%;
+line-height: 1.6;
+padding-bottom: 2em;
+padding-left: 1em;
+padding-right: 1em;
+padding-top: 0;
+
+/* Recommended */
+border-top: 0;
+font: 100%/1.6 palatino, georgia, serif;
+padding: 0 1em 2em;
+```
+
+- 值为"0"时，可以不指定单位（除非有必要）：
+
+```css
+margin: 0;
+padding: 0;
+```
+
+- 值在-1到1之间时，可以省去0：
+
+```css
+font-size: .8em;
+```
+
+- 可以的话，请使用3位的十六进制：
+
+```css
+/* Not recommended */
+color: #eebbcc;
+
+/* Recommended */
+color: #ebc;
+```
+
+- 属性需要使用引号时使用单引号`'`，`URI`值无需使用单引号：
+
+```css
+/* Not recommended */
+@import url("//www.google.com/css/maia.css");
+
+html {
+  font-family: "open sans", arial, sans-serif;
+}
+
+/* Recommended */
+@import url(//www.google.com/css/maia.css);
+
+html {
+  font-family: 'open sans', arial, sans-serif;
+}
+```
 ##Code Review CheckList
 
 ###JavaScript List
