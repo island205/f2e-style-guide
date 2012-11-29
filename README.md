@@ -509,7 +509,7 @@ ul#example {}
 div.error {}
 
 /* Recommended */
-#example {}
+\#example {}
 .error {}
 ```
 
