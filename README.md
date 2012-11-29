@@ -503,6 +503,7 @@ var hoo = {
 #####类型选择符
 
 - 若无必要，不要把元素名与ID或者class连在一起使用：
+
 ```css
 /* Not recommended */
 ul#example {}
