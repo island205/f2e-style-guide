@@ -388,6 +388,10 @@ var hoo = {
 
 ####语言规范
 
+#####DOCTYPE
+
+- 使用`HTML5`，即`<!DOCTYPE html>`，且必须出现在在`HTML`文档的最顶端。
+
 #####语义化
 
 - 编写语义化的代码：
@@ -432,13 +436,36 @@ var hoo = {
 <script src="//www.google.com/js/gweb/analytics/autotrack.js"></script>
 ```
 
-#####DOCTYPE
-
-- 使用`HTML5`，即`<!DOCTYPE html>`，且必须出现在在`HTML`文档的最顶端。
-
 #####button标记
 
 - 不推荐使用`<button></button>`标记，要使用必须标明`button`的类型`type="button"`或者`type="submit"`。
+
+#####table
+
+- 在合适的时候充分利用`<thead>`、`<tfoot>`、`<tbody>`和`<th>`这些与`table`相关的标记，注意：`<tfoot>`放在`tbody`之前，以便在整个表格数据加载完之前先把表尾显示出来。
+
+```html
+<table summary="This is a chart of invoices for 2011.">
+    <thead>
+        <tr>
+            <th scope="col">Table header 1</th>
+            <th scope="col">Table header 2</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td>Table footer 1</td>
+            <td>Table footer 2</td>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr>
+            <td>Table data 1</td>
+            <td>Table data 2</td>
+        </tr>
+    </tbody>
+</table>
+```
 
 #####Protocol
 
@@ -459,7 +486,7 @@ var hoo = {
 
 #####格式化
 
-- 新的`block`、`list`、`table`元素都新起一行，缩进每一个子元素，例如：
+- `block`、`list`、`table`元素都新起一行，缩进每一个子元素，例如：
 
 ```html
 <blockquote>
@@ -510,11 +537,22 @@ ul#example {}
 div.error {}
 
 /* Recommended */
-\#example {}
+#example {}
 .error {}
 ```
 
 ####编码风格
+
+#####代码风格
+
+```css
+// This is a good example!
+.styleguide-format {
+  border: 1px solid #0f0;
+  color: #000;
+  background: rgba(0,0,0,0.5);
+}
+```
 
 #####class 和 ID
 
@@ -652,3 +690,8 @@ html {
 ###CSS List
 
 ##参考
+
+- [Google JavaScript Style Guide](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
+- [Google HTML/CSS Style Guide](http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml)
+- [github styleguide](https://github.com/styleguide)
+- [书写具备一致风格、通俗易懂 JavaScript 的原则](https://github.com/rwldrn/idiomatic.js/tree/master/translations/zh_CN)
