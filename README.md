@@ -541,6 +541,9 @@ div.error {}
 .error {}
 ```
 
+#####@import
+
+- 禁止使用`@import`组织代码，使用`LESS`等CSS预编译器除外。
 ####编码风格
 
 #####代码风格
@@ -684,10 +687,205 @@ html {
         <td>按库中的js模板书写js</td>
         <td style="color:green">+10</td>
     </tr>
+    <tr>
+        <td>无侵入式js，tracelog除外，有特例名。</td>
+        <td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>使用命名空间或闭包，禁止出现不必要的全局变量。</td>
+        <td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>方法、变量都使用驼峰命名，类使用大驼峰(Pascal)命名。</td>
+        <td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>变量声明应放在function的最上面，避免使用未声明的变量。</td>
+        <td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>常量名全部大写，单词分隔使用下划线。</td>
+        <td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>Bolean类型变量必须以is/has等判断词开头，str开头的必须是字符串，arr开头的必须是数组，num开头的必须是数字，obj开头的必须是对象。</td>
+        <td style="color:red">-2</td>
+    </tr>
+    <tr>
+        <td>获取和配置参数的函数必须以get set开头。</td>
+        <td style="color:red">-2</td>
+    </tr>
+    <tr>
+        <td>私有变量和方法如果不在闭包中，则以下划线开头。</td>
+        <td style="color:red">+5</td>
+    </tr>
+    <tr>
+        <td>关键字和保留字不能作为变量名。</td>
+        <td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>3个条件及以上的条件语句用switch代替`if else`。</td>
+        <td style="color:red">-2</td>
+    </tr>
+    <tr>
+        <td>使用{}代替new Object()；使用[]代替new Array()。</td>
+        <td style="color:red">-2</td>
+    </tr>
+    <tr>
+        <td>合理使用===和!==操作符。</td>
+        <td style="color:red">-3</td>
+    </tr>
+    <tr>
+        <td>不允许使用eval。</td>
+        <td style="color:red">-3</td>
+    </tr>
+    <tr>
+        <td>使用选择器时，能确定tagName的，必须加上tagName，例如".className"须写成"tagName.className"，"[attribute=xxx]"须写成"tagName[attribute=xxx]"。</td>
+        <td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>尽量少的重绘和重排，当需要给元素设置样式时，超过2个及2个以上时，采用className处理。</td>
+        <td style="color:red">-3</td>
+    </tr>
+    <tr>
+        <td>页面第三方广告（js引入的）必须采用无堵塞的方案接入。</td>
+        <td style="color:red">-3</td>
+    </tr>
+    <tr>
+        <td>防止重复提交（form、ajax）。</td>
+        <td style="color:red">-3</td>
+    </tr>
+    <tr>
+        <td>form验证需加在onsubmit上。</td>
+        <td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>一般情况下，DOMReady之前不能进行DOM操作。</td>
+        <td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>onerror事件必须消除onerror事件。</td>
+        <td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>使用".data()"读写自定义属性时需要转化成驼峰形式。</td>
+        <td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>不出现将造成线上bug的潜在js错误。此项为累计扣分，出现一次即扣相应分值，两次则扣两次，依此类推。但凡出现一次，均不予发布。</td>
+        <td style="color:red">-5</td>
+    </tr>
 </table>
 
 ###HTML List
+
+<table>
+    <tr>
+        <th>内容</th>
+        <th>分数</th>
+    </tr>
+    <tr>
+        <td>必须存在文档类型声明，新页面统一使用HTML5 DTD，且必须出现在HTML文档的最前面。</td>
+        <td style="color:red">-10</td>
+    </tr>
+    <tr>
+        <td>head部份格式正确，包含字符集meta和title。</td>
+        <td style="color:red">-10</td>
+    </tr>
+    <tr>
+        <td>外链CSS置于head里。</td>
+        v<td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>不通过@import在页面上引入CSS。</td>
+        v<td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>外链产品线级js置于head，页面级js置于页底。</td>
+        v<td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>标签全部小写，包含属性，且自定义属性单词分隔用中横线。</td>
+        v<td style="color:red">-3</td>
+    </tr>
+    <tr>
+        <td>id、class名称全部小写，单词分隔使用中横线。</td>
+        v<td style="color:red">-3</td>
+    </tr>
+    <tr>
+        <td>属性值使用双引号。</td>
+        v<td style="color:red">-3</td>
+    </tr>
+    <tr>
+        <td>标签必须闭合，嵌套正确。</td>
+        v<td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>行内标签不得包含块级标签。</td>
+        v<td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>h类标签层次分明，依次递减。</td>
+        v<td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>a标签加上title属性，除非作为功能点的a标签。</td>
+        v<td style="color:red">-2</td>
+    </tr>
+    <tr>
+        <td>img标签加上alt属性。</td>
+        v<td style="color:red">-2</td>
+    </tr>
+    <tr>
+        <td>text、radio、checkbox、textarea、select必须加name属性。</td>
+        <td style="color:red">-10</td>
+    </tr>
+    <tr>
+        <td>所有按钮必须用button（button/submit/reset）。</td>
+        <td style="color:red">-5</td>
+    </tr>
+</table>
+
 ###CSS List
+
+<table>
+    <tr>
+        <th>内容</th>
+        <th>分数</th>
+    </tr>
+    <tr>
+        <td>页面级别样式不使用id。</td>
+        <td style="color:red">-3</td>
+    </tr>
+    <tr>
+        <td>页面级别样式不能全局定义标签样式。</td>
+        <td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>不能定义内嵌样式style。</td>
+        <td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>CSS级联深度不能超过4层。</td>
+        <td style="color:red">-2</td>
+    </tr>
+    <tr>
+        <td>合理使用hack。</td>
+        <td style="color:red">-3</td>
+    </tr>
+    <tr>
+        <td>禁止使用星号（*）选择符，含选择符中带*号的hack。</td>
+        <td style="color:red">-10</td>
+    </tr>
+    <tr>
+        <td>禁止重写reset中定义的a标签的hover色。</td>
+        <td style="color:red">-5</td>
+    </tr>
+    <tr>
+        <td>禁止使用CSS表达式，fixed例外。</td>
+        <td style="color:red">-5</td>
+    </tr>
+</table>
 
 ##参考
 
