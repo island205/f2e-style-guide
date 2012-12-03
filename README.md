@@ -14,6 +14,7 @@
     2. [HTML List](#html-list)
     3. [CSS List](#css-list)  
 4. [参考](#参考)
+5. [贡献者](贡献者)
 
 ##编码规范
 
@@ -190,7 +191,7 @@ var myString = 'A rather long string of English text, an error message \
 
 #####内置对象原型
 
-- 不允许修改。
+- 不允许修改（除非参考[MDC](https://developer.mozilla.org/en/docs/JavaScript)）。
 
 #####IE条件注释
 
@@ -205,6 +206,24 @@ var f = function () {
 #####Ajax
 
 - 使用Ajax，必须指明是`HTTP`使用`GET`，`POST`，如果使用`GET`，必须指明是否需要`cache`。
+
+
+#####JSON与JavaScript对象字面量
+
+- JSON中的对象属性必须加上引号`'\"`。
+
+#####console & debugger
+
+- 在提交的代码中不允许出现`console`、`debugger`。
+
+#####JavaScript 1.5
+
+- 慎用`JavaScript 1.5`以上的新特性，以[1.5](http://en.wikipedia.org/wiki/JavaScript#Versions)为准，example；`trim`。
+
+
+#####控制元素的显隐藏
+
+- 使用`hide`样式来控制元素的显隐
 
 ####编码风格
 
@@ -368,13 +387,31 @@ var hoo = {
 
     // 不使用 `new` 来调用构建函数，你可能会这样做：
     var ctor = function (foo) {
-        return new Ctor(foo);
-    };
+            return new Ctor(foo);
+        };
 
     // 把我们的构建函数变成全局对象
     global.ctor = ctor;
 
 })(this);
+```
+
+#####var
+
+- 推荐在同一个地方定义多个变量，写一个`var`：
+
+```javascript
+var build = Base._build,
+
+    builtClass = build._ctor(main, cfg),
+    buildCfg = build._cfg(main, cfg, extensions),
+
+    _mixCust = build._mixCust,
+    dynamic = builtClass._yuibuild.dynamic,
+
+    i, l, extClass, extProto,
+    initializer,
+    destructor;
 ```
 
 #####文件
@@ -467,6 +504,10 @@ var hoo = {
 </table>
 ```
 
+#####iframe
+
+- 尽量少使用`iframe`
+
 #####Protocol
 
 - 省略嵌入式资源的`Protocol`（建议）
@@ -481,6 +522,11 @@ var hoo = {
 #####Meta 规则
 
 - 编码：`<meta charset="utf-8" />`
+
+
+#####HTML5
+
+- 慎用HTML5中的新标签，可参考[caniuse.com](http://caniuse.com)。
 
 ####编码风格
 
@@ -544,6 +590,16 @@ div.error {}
 #####@import
 
 - 禁止使用`@import`组织代码，使用`LESS`等CSS预编译器除外。
+
+#####分号
+
+- 大括号之外不能写分号`;`；
+- 每个属性声明后必须添加分号`;`[CSS语法](http://www.w3.org/TR/CSS21/syndata.html#q10)。
+
+#####CSS3
+
+- 慎用CSS3的动画`transition`（chrome闪烁）
+
 ####编码风格
 
 #####代码风格
@@ -555,6 +611,49 @@ div.error {}
   color: #000;
   background: rgba(0,0,0,0.5);
 }
+
+//in a line
+.styleguide-format{border: 1px solid #0f0;color: #000;background: rgba(0,0,0,0.5);}
+```
+
+#####注释
+
+//TODO
+
+#####属性顺序
+
+- 推荐按照一定的顺序书写css。
+
+```css
+display || visibility
+list-style : list-style-type || list-style-position || list-style-image
+position
+top || right || bottom || left
+z-index
+clear
+float
+ 
+width
+max-width || min-width
+height
+max-height || min-height
+overflow || clip
+margin : margin-top || margin-right || margin-bottom || margin-left
+padding : padding-top || padding-right || padding-bottom || padding-left
+outline : outline-color || outline-style || outline-width
+border
+background : background-color || background-image || background-repeat || background-attachment || background-position
+ 
+color
+font : font-style || font-variant || font-weight || font-size || line-height || font-family
+font : caption | icon | menu | message-box | small-caption | status-bar
+text-overflow
+text-align
+text-indent
+line-height
+white-space
+vertical-align
+cursor
 ```
 
 #####class 和 ID
@@ -663,6 +762,11 @@ html {
   font-family: 'open sans', arial, sans-serif;
 }
 ```
+
+#####无用样式
+
+- 清除无用样式（重要页面、其妙的bug）
+
 ##Code Review CheckList
 
 ###JavaScript List
@@ -893,3 +997,5 @@ html {
 - [Google HTML/CSS Style Guide](http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml)
 - [github styleguide](https://github.com/styleguide)
 - [书写具备一致风格、通俗易懂 JavaScript 的原则](https://github.com/rwldrn/idiomatic.js/tree/master/translations/zh_CN)
+
+##贡献者
