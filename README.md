@@ -133,6 +133,7 @@ function bar(a, b) {
     //...
 })(this)
 ```
+- 适当使用必要的全局变量作为命名空间组织代码
 
 #####eval
 
@@ -218,15 +219,17 @@ var f = function () {
 #####Ajax
 
 - 使用Ajax，必须指明是`HTTP`使用`GET`，`POST`，如果使用`GET`，必须指明是否需要`cache`。
+- 注意cache的情况
 
 
 #####JSON与JavaScript对象字面量
 
-- JSON中的对象属性必须加上引号`'\"`。
+- JSON中的对象属性必须加上引号`"`。
 
 #####console & debugger
 
 - 在提交的代码中不允许出现`console`、`debugger`。
+- 开发时期的解决方案
 
 #####JavaScript 1.5
 
@@ -237,6 +240,18 @@ var f = function () {
 
 - 使用`hide`样式来控制元素的显隐
 
+#####dataset
+
+- 不推荐自定义属性，推荐使用`dataset`
+
+#####template type
+
+- 如果所使用的模板引擎有惯例，则沿用惯例，否则使用`text/template`
+
+#####引号
+
+- 字符串定义时推荐使用单引号`'`，关键字、保留字使用引号括起来
+
 ####编码风格
 
 #####命名
@@ -246,6 +261,11 @@ var f = function () {
 - 文件的命名包括小写字母、`-`、`_`（不能包含其他字符，且`-`优于`_`），使用`.js`结尾。
 - 不能使用拼音。
 
+#####推荐命名范式
+
+- `is`
+- `$`
+- ``
 #####字符串
 
 - 单引号`'`优于双引号`"`（包含HTML的字符串）。
@@ -408,9 +428,13 @@ var hoo = {
 })(this);
 ```
 
+#####函数定义 空格写法
+
+#####dom变量 回调函数 数组
+
 #####var
 
-- 推荐在同一个地方定义多个变量，写一个`var`：
+- 推荐在同一个地方定义多个变量，写一个`var`，合理分组：
 
 ```javascript
 var build = Base._build,
@@ -537,7 +561,15 @@ var build = Base._build,
 
 #####HTML5
 
-- 慎用HTML5中的新标签，可参考[caniuse.com](http://caniuse.com)。
+- 慎用HTML5中的新标签，可参考[caniuse.com](http://caniuse.com)。需要讨论，[html5shiv](https://github.com/aFarkas/html5shiv/blob/master/src/html5shiv.js)
+
+#####内联事件
+
+- 禁止使用内联事件
+
+```html
+<a onclick="return false" >a link</a>
+```
 
 ####编码风格
 
@@ -641,6 +673,12 @@ div.error {}
 <!--[if IE 9 ]> <html class="ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html> <!--<![endif]-->
 ```
+
+#####z-index
+
+- z-index规范
+
+#####css权重规范
 
 ####编码风格
 
