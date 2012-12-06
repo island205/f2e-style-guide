@@ -122,6 +122,18 @@ function bar(a, b) {
     }
 }
 ```
+
+#####全局变量
+
+- 不允许出现无必要的全局变量，通常使用一个即时执行的函数解决：
+
+```javascript
+(function(root){
+    var global
+    //...
+})(this)
+```
+
 #####eval
 
 - 只用于解析序列化字符串，处理XHR等从服务端请求得到的返回值
@@ -521,8 +533,7 @@ var build = Base._build,
 
 #####Meta 规则
 
-- 编码：`<meta charset="utf-8" />`
-
+- 编码：`<meta charset="utf-8" />`，写在`title`之前。
 
 #####HTML5
 
@@ -569,6 +580,24 @@ var build = Base._build,
 
 - 使用双引号`"`包裹属性值。
 
+
+#####标签闭合
+
+```html
+/* Recommended */
+<div></div>
+
+<input name="foo" type="submit" />
+```
+
+#####bool属性
+
+- 推荐只写属性名
+```html
+/* Recommended */
+<input type="text" name="bar" readony />
+```
+
 ###CSS
 
 ####语言规范
@@ -599,6 +628,19 @@ div.error {}
 #####CSS3
 
 - 慎用CSS3的动画`transition`（chrome闪烁）
+
+
+#####hack
+
+- 尽量少用浏览器`hack`，可以考虑的一种方式：
+
+```html
+<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
+<!--[if IE 7 ]> <html class="ie7"> <![endif]-->
+<!--[if IE 8 ]> <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]> <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html> <!--<![endif]-->
+```
 
 ####编码风格
 
