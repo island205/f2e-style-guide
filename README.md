@@ -263,9 +263,25 @@ var f = function () {
 
 #####推荐命名范式
 
-- `is`
-- `$`
-- ``
+- `dom`选择器调用的返回值以`$`开头，这是`jQuery`常用的方式：`$body = jQuery(document.body)`;
+- `boolean`定义：比起`bEmpty`，更推荐使用`isEmpty`,`canExit`,`hasNext`这样的命名方法。推荐使用`is`、`can`、`has`这样的前缀作为这类变量的前缀。
+- 函数或者方法推荐使用`动宾`或`动`结构，例如：
+
+```javascript
+function getBooks() {
+    //...
+}
+//or
+
+var books = {
+    get: function(){
+        //...
+    }
+}
+```
+- 比起`arrBooks`，更推荐使用`bookList`，比起`objStates`，更推荐使用`stateMap`。
+- 推荐的一些回调函数（或对象）的范式：`wordHandler`、`changeListener`、`getBookCallback`、`onLoad`。也可以使用其他能够表达功能的命名方式 
+
 #####字符串
 
 - 单引号`'`优于双引号`"`（包含HTML的字符串）。
@@ -288,7 +304,8 @@ var f = function () {
 
 - 行内注释使用`//`；
 - 推荐使用两种注释方式，在同一个项目中只能使用其中一种：
-    1. [backbone](https://github.com/documentcloud/backbone/blob/master/backbone.js)所采用的`markdown`形式，可以使用 [docco](https://github.com/jashkenas/docco)生成文档:
+
+1. [backbone](https://github.com/documentcloud/backbone/blob/master/backbone.js)所采用的`markdown`形式，可以使用 [docco](https://github.com/jashkenas/docco)生成文档:
   
 ```javascript
 //     Backbone.js 0.9.2
@@ -335,7 +352,7 @@ var Events = Backbone.Events = {
 }
 ```
 
-    2. [JSDoc](http://code.google.com/p/jsdoc-toolkit/)这种与`JavaDoc`类似的方式，例如：  
+2. [JSDoc](http://code.google.com/p/jsdoc-toolkit/)这种与`JavaDoc`类似的方式，例如：  
 
 ```javascript
 // Copyright 2009 Google Inc. All Rights Reserved.
@@ -514,10 +531,6 @@ var hoo = {
 
 })(this);
 ```
-
-#####函数定义 空格写法
-
-#####dom变量 回调函数 数组
 
 #####var
 
