@@ -334,6 +334,7 @@ var Events = Backbone.Events = {
   }
 }
 ```
+
     2. [JSDoc](http://code.google.com/p/jsdoc-toolkit/)这种与`JavaDoc`类似的方式，例如：  
 
 ```javascript
