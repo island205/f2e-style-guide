@@ -286,10 +286,96 @@ var f = function () {
 
 #####注释
 
-- [backbone](https://github.com/documentcloud/backbone/blob/master/backbone.js) [docco](https://github.com/jashkenas/docco)
-- [JSDoc](http://code.google.com/p/jsdoc-toolkit/)
-- [YUIDoc](http://yui.github.com/yuidoc/syntax/index.html)
-- .....
+- 行内注释使用`//`；
+- 推荐使用两种注释方式，在同一个项目中只能使用其中一种：
+    1. [backbone](https://github.com/documentcloud/backbone/blob/master/backbone.js)所采用的`markdown`形式，可以使用 [docco](https://github.com/jashkenas/docco)生成文档:
+  
+```javascript
+//     Backbone.js 0.9.2
+
+//     (c) 2010-2012 Jeremy Ashkenas, DocumentCloud Inc.
+//     Backbone may be freely distributed under the MIT license.
+//     For all details and documentation:
+//     http://backbonejs.org
+
+// A module that can be mixed in to *any object* in order to provide it with
+// custom events. You may bind with `on` or remove with `off` callback functions
+// to an event; `trigger`-ing an event fires all callbacks in succession.
+//
+//     var object = {};
+//     _.extend(object, Backbone.Events);
+//     object.on('expand', function(){ alert('expanded'); });
+//     object.trigger('expand');
+//
+var Events = Backbone.Events = {
+
+  // Bind one or more space separated events, `events`, to a `callback`
+  // function. Passing `"all"` will bind the callback to all events fired.
+  on: function(events, callback, context) {
+    if (_.isObject(events)) {
+      for (key in events) {
+        this.on(key, events[key], callback);
+      }
+      return this;
+    }
+
+    var calls, event, list;
+    if (!callback) return this;
+
+    events = events.split(eventSplitter);
+    calls = this._callbacks || (this._callbacks = {});
+
+    while (event = events.shift()) {
+      list = calls[event] || (calls[event] = []);
+      list.push(callback, context);
+    }
+
+    return this;
+  }
+}
+```
+    2. [JSDoc](http://code.google.com/p/jsdoc-toolkit/)这种与`JavaDoc`类似的方式，例如：  
+
+```javascript
+// Copyright 2009 Google Inc. All Rights Reserved.
+
+/**
+ * @fileoverview Description of file, its uses and information
+ * about its dependencies.
+ * @author user@google.com (Firstname Lastname)
+ */
+
+/**
+ * Class making something fun and easy.
+ * @param {string} arg1 An argument that makes this more interesting.
+ * @param {Array.<number>} arg2 List of numbers to be processed.
+ * @constructor
+ * @extends {goog.Disposable}
+ */
+project.MyClass = function(arg1, arg2) {
+  // ...
+};
+goog.inherits(project.MyClass, goog.Disposable);
+
+/**
+ * Converts text to some completely different text.
+ * @param {string} arg1 An argument that makes this more interesting.
+ * @return {string} Some return value.
+ */
+project.MyClass.prototype.someMethod = function(arg1) {
+  // ...
+};
+
+/**
+ * Operates on an instance of MyClass and returns something.
+ * @param {project.MyClass} obj Instance of MyClass which leads to a long
+ *     comment that needs to be wrapped to two lines.
+ * @return {boolean} Whether something occured.
+ */
+function PR_someMethod(obj) {
+  // ...
+}
+```
 
 #####代码风格
 
@@ -697,8 +783,6 @@ div.error {}
 ```
 
 #####注释
-
-//TODO
 
 #####属性顺序
 
