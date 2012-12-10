@@ -8,11 +8,13 @@
         - [编码风格](#编码风格)
     2. [HTML](#html)
     3. [CSS](#css)
+    4. [图片](#图片)
   
 3. [Code Review Check List](#code-review-checklist)  
     1. [JavaScript List](#javascript-list)
     2. [HTML List](#html-list)
-    3. [CSS List](#css-list)  
+    3. [CSS List](#css-list)
+    4. [图片 List](#图片-list)  
 4. [参考](#参考)
 5. [贡献者](贡献者)
 
@@ -579,6 +581,10 @@ var build = Base._build,
 
 #####结构、表现和行为分离
 
+- 禁止使用行内样式
+- 字体表现应该使用样式来实现，禁止使用`font`标签
+- `div`页面版式间距等均严格要求以`CSS`定义
+
 #####alt
 
 - 提供媒体文件（`img`等）的替代`alt`：
@@ -661,7 +667,9 @@ var build = Base._build,
 
 #####HTML5
 
-- 慎用HTML5中的新标签，可参考[caniuse.com](http://caniuse.com)。需要讨论，[html5shiv](https://github.com/aFarkas/html5shiv/blob/master/src/html5shiv.js)
+- 慎用HTML5中的新特性，可参考[caniuse.com](http://caniuse.com)。需要讨论，[html5shiv](https://github.com/aFarkas/html5shiv/blob/master/src/html5shiv.js)
+
+- 业务中兼容HTML5，推荐使用HTML5特性。
 
 #####内联事件
 
@@ -754,8 +762,8 @@ div.error {}
 
 #####分号
 
-- 大括号之外不能写分号`;`；
 - 每个属性声明后必须添加分号`;`[CSS语法](http://www.w3.org/TR/CSS21/syndata.html#q10)。
+- 大括号之外不能写分号`;`；
 
 #####CSS3
 
@@ -778,7 +786,33 @@ div.error {}
 
 - z-index规范
 
-#####css权重规范
+
+#####reset
+
+- 使用通用的reset
+
+#####清除浮动
+
+- 原则上所有的浮动都需要做好清除浮动的工作，使用同一的清除浮动样式：
+
+```csss
+.clearfix:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+/* 针对 Internet Explorer */
+.clearfix {
+    zoom: 1;
+}
+```
+
+#####&nbsp;
+
+- 禁止使用`&nbsp;`处理定位
 
 ####编码风格
 
@@ -796,7 +830,33 @@ div.error {}
 .styleguide-format{border: 1px solid #0f0;color: #000;background: rgba(0,0,0,0.5);}
 ```
 
+#####命名
+
+- 小写字母，使用短横线`-`链接单词：
+
+```css
+/* Not recommended: does not separate the words “demo” and “image” */
+.demoimage {}
+
+/* Not recommended: uses underscore instead of hyphen */
+.error_status {}
+/* Recommended */
+#video-id {}
+.ads-sample {}
+```
+
+- 不建议将类命名为 `.class1`, `.box2`, `.class-one`，大多数情况下，这是偷懒的表现。事实上，几乎所有情况，我们都可以为他们取一个好名字
+
 #####注释
+
+- 模块注释，推荐使用下面这样的方式：
+
+/*---------------- footer ----------------*/
+...
+/*---------------- /footer ----------------*/
+
+- 针对浏览器特殊处理的hack的注释：
+
 
 #####属性顺序
 
@@ -835,19 +895,6 @@ cursor
 ```
 
 #####class 和 ID
-
-- 使用短横线`-`链接单词：
-
-```css
-/* Not recommended: does not separate the words “demo” and “image” */
-.demoimage {}
-
-/* Not recommended: uses underscore instead of hyphen */
-.error_status {}
-/* Recommended */
-#video-id {}
-.ads-sample {}
-```
 
 - 说明元素的功能或者作用；
 
@@ -943,7 +990,16 @@ html {
 
 #####无用样式
 
-- 清除无用样式（重要页面、其妙的bug）
+- 清除无用样式（重要页面、奇妙的bug）
+
+###图片
+    
+- 切图时必须合理的压缩每张图片，提高页面加载速度，如果能用1像素的就切成1像素
+- 一般情况下，请保存为 `png-8` 格式，所有能保存为静态gif的图像，都应该保存为 png-8 格式
+- png-24与jpg都是一种压缩图像格式，但是与jpg不同，`png-24` 是无损压缩，因此不会降低图像的品质（比如jpg图像锐利边缘的噪点），这也是要求效果图使用`png-24`格式保存的原因。
+- jpg就不多说了。jpg作为一种有损压缩格式，在每次使用它压缩的时候，均会再次降低图像的品质。多次编辑同一个jpg图像，情况会变得越来越糟糕。所以一定要从设计师手中拿到无损格式的设计稿再进行工作。一般不应该为JPG格式，除非这个图像：色值远超过256色(鲜艳而华丽)，保存为索引颜色会出现明显的梯度变化（梯田），颜色抖动（点状渐变）
+- 一般css背景图不使用 jpg 格式的图像
+
 
 ##Code Review CheckList
 
