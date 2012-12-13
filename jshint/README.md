@@ -4,7 +4,7 @@
 
 ##配置
 
-- 下载或复制下面的内容到`.jshintrc`文件。
+- [下载](https://raw.github.com/island205/codingguide/master/jshint/.jshintrc)或复制下面的内容到`.jshintrc`文件。
 
 ```json
 {
@@ -166,3 +166,8 @@
 
 - https://github.com/jshint/jshint
 - https://github.com/uipoet/sublime-jshint
+
+###vim
+
+再续……
+
