@@ -1,0 +1,49 @@
+{
+    // browser
+    "browser":true,
+    // This option defines globals that are usually used for logging poor-man's debugging: console, alert, etc. It is usually a good idea to not ship them in production because, for example, console.log breaks in legacy versions of Internet Explorer.
+    "devel":true,
+    "jquery":true,
+    "mootools":true,
+    
+    // global
+    "globals":{
+        "DP":false,
+        "exports":false,
+        "require":false,
+        "module":false,
+        "define":false,
+        "seajs":false
+    },
+    // grammar
+    // "globalstrict":true,
+    "undef":true,
+    "eqeqeq":true,
+    "trailing":true,
+    // "es5":true,
+    "scripturl":true,
+    "strict":false,
+    "loopfunc":true,
+    "eqnull":true,
+
+    // name
+    "camelcase":true,
+    "newcap":true,
+
+    // error
+    "unused":true,
+
+    // style
+    "curly":true,
+    "asi":true,
+    // var fun = function () {return function () {} }()
+    "immed":true,
+    "latedef":true,
+    "noarg":true,
+    "noempty":true,
+    "quotmark":"single",
+    "maxdepth":20,
+    // while (i = 10) { 
+    "boss":true,
+    "indent":4
+}
