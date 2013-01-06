@@ -160,7 +160,7 @@
 2. 使用 package install 安装 JSHint 插件
 3. 安装Node
 4. 安装jshint，例如：`npm install -g jshint`
-5. 添加配置文件（即`.jshintrc）到`pwd`或者其祖先级目录，比如说你的js源码在D:盘的某个文件夹中，那可以放在D:下面。（也可以放到用户目录下面）
+5. 添加配置文件（即`.jshintrc`）到`pwd`或者其祖先级目录，比如说你的js源码在D:盘的某个文件夹中，那可以放在D:下面。（也可以放到用户目录下面）
 
 可参考：
 
