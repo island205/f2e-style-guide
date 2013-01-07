@@ -1021,15 +1021,6 @@ var JavaScriptWorker = exports.JavaScriptWorker = function(sender) {
     "jquery": true,
     "mootools": true,
 
-    // global
-    "globals": {
-        "DP": false,
-        "exports": false,
-        "require": false,
-        "module": false,
-        "define": false,
-        "seajs": false
-    },
     // grammar
     "undef": true,
     "eqeqeq": true,
@@ -1107,7 +1098,14 @@ oop.inherits(JavaScriptWorker, Mirror);
         }
         var errors = [];
         var maxErrorLevel = this.isValidJS(value) ? "warning" : "error";
-        lint(value, this.options);
+        lint(value, this.options, {
+            "DP": false,
+            "exports": false,
+            "require": false,
+            "module": false,
+            "define": false,
+            "seajs": false
+        });
         var results = lint.errors;
 
         var errorAdded = false
