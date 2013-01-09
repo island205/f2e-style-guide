@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ONLINE TOOLS</title>
+    <title>DPLint Online</title>
     <link href="./bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="./bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <style type="text/css">
@@ -10,9 +10,26 @@
             margin-top:20px;
             margin-bottom:40px;
         }
+        p{
+            text-indent: 2em;
+        }
+        h2, h5{
+            margin:20px 0 5px;
+        }
+        blockqoute {
+            font-style:italic;
+            font-size:2em;
+            padding:40px;
+            display:inline-block;
+            text-align:center;
+        }
         .container-narrow{
             margin: 0 auto;
             max-width:960px;
+        }
+        .editor-container{
+            width:100%;
+            height:500px;
         }
         #editor{
             width:958px;
@@ -22,17 +39,58 @@
             -moz-box-shadow: 0px 0px 50px #aaa;
             box-shadow: 0px 0px 50px #aaa;
         }
+        .to_help{
+            float:right;
+            margin-right:8px;
+            margin-top:21px;
+        }
+        .to_help:hover {
+            cursor:help;
+        }
+        .help {
+            margin-top:200px;
+        }
+        .help-image{
+            width:960px;
+        }
     </style>
 </head>
 <body>
     <div class="container-narrow">
         <div>
             <h2 class="btn btn-warning">DPLint</h2>
+            <a href="#help" class="to_help">帮助</a>
         </div>
 
         <br />
+        <div class="editor-container">
+            <div id="editor"></div>
+        </div>
 
-        <div id="editor">// HERE TO PASTE & LINT</div>
+        <div id="help" class="help">
+            <h2>使用指南</h2>
+            <p><code>DPLint Online</code>是一个在线的<code>JavaScript</code>代码检查工具，基于<a href="http://www.jshint.com/" target="_blank"><code>JSHint</code></a>，根据我们的规范需要进行了配置。</p>
+            <h5>使用方法</h5>
+            <p>如图1-1，将代码复制到编辑器中，在编辑器左侧就会有提示信息，表示本行中包含没有通过检查的不足或错误。</p>
+            <img src="./image/help1-1.jpg" class="help-image" alt="" />
+
+            <h5>自定义配置</h5>
+            <p>本工具支持自定义配置，如果规范太过严格或者有特殊需求，您可以通过配置使得你的代码通过检测。</p>
+            <p>例如，规范中，缩进使用4个字符，如有需要改成2个，您可以在您的代码头部加上如下配置：</p>
+<pre><code>/*jshint indent:2 */
+var fNOP = function () {
+  console.log(null)
+}
+fNOP()</code></pre>
+
+            <p>更多配置可参考<a href="http://www.jshint.com/docs/" target="_blank">JSHint文档</a>。</p>
+
+            <h5>反馈</h5>
+
+            <p>有任何疑问或问题都可以反馈给<a href="mailto:zhi.cun@dianping.com">zhi.cun</a>。</p>
+
+            <blockqoute>“但愿本工具能助您写出更赞的代码！”</blockqoute>
+        </div>
     </div>
 
     <script src="./ace/ace.js" type="text/javascript" charset="utf-8"></script>
