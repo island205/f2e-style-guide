@@ -5,16 +5,23 @@
 
 ###变量
 
-- 必须使用`var`关键字定义变量；
-- 定义变量（或使用函数定义式）必须先定义后使用；推荐函数也先声明后使用。
-- 不能在一个块内声明一个函数。不能写成：
+- 必须使用`var`进行变量申明；
+- 定义变量（或使用函数定义式）必须先定义后使用；推荐函数也先声明后使用；
+- 不允许在一个块内声明一个函数。不能写成：
 
 ```javascript
 if (x) {
     function foo() {}
 }
 ```
-- 不允许出现全局变量，通常使用一个即时执行的函数解决：
+- 如果确实需要在块中定义函数, 建议使用函数表达式来初始化变量:
+
+```javascript
+if (x) {
+    var foo = function() {}
+}
+```
+- 不允许出现全局变量，通常使用一个即时执行的函数代替：
 
 ```javascript
 (function(root){
@@ -23,19 +30,14 @@ if (x) {
 })(this)
 ```
 
-- 如果确实需要在块中定义函数, 建议使用函数表达式来初始化变量:
-
-```javascript
-if (x) {
-    var foo = function() {}
-}
-```
-
 ###命名
 
-- 使用大写字符，用下划线分隔，例如：`NAME_LIKE_THIS`；  
+- 常量定义使用大写字符，用下划线分隔，例如：`NAME_LIKE_THIS`；  
+- 常见的命名方式：`functionNamesLikeThis`, `variableNamesLikeThis`, `ClassNamesLikeThis`, `EnumNamesLikeThis`, `methodNamesLikeThis`和`SYMBOLIC_CONSTANTS_LIKE_THIS`。
+- 私有的属性或者方法以“`_`”开头
+- 文件的命名包括小写字母、`_`（不能包含其他字符，且`-`优于`_`），使用`.js`结尾。
+- 不能使用拼音，英文单词拼写正确；
 - 推荐使用这样的常量明明模式：`<常量类型>_<适用场景>_<具体作用>`，例如：  
-
 ```javascript
 // 正则表达式_它用来 match 字符串_match email的
 var
@@ -43,14 +45,11 @@ var
     STR_WHITESPACE = " ";    // fill，优先级，规范/建议，作用域的不同要求 -> 
 ```
 
-- 常见的命名方式：`functionNamesLikeThis`, `variableNamesLikeThis`, `ClassNamesLikeThis`, `EnumNamesLikeThis`, `methodNamesLikeThis`和`SYMBOLIC_CONSTANTS_LIKE_THIS`。
-- 私有的属性、变量或者方法以“`_`”开头
-- 文件的命名包括小写字母、`-`、`_`（不能包含其他字符，且`-`优于`_`），使用`.js`结尾。
-- 不能使用拼音。
-
 ###推荐命名范式
 
-- `boolean`定义：比起`bEmpty`，更推荐使用`isEmpty`,`canExit`,`hasNext`这样的命名方法。推荐使用`is`、`can`、`has`这样的前缀作为这类变量的前缀。
+- `boolean`：比起`bEmpty`，更推荐使用`isEmpty`,`canExit`,`hasNext`这样的命名方法。推荐使用`is`、`can`、`has`这样的前缀作为这类变量的前缀；
+- 比起`arrBooks`，更推荐使用`bookList`，比起`objStates`，更推荐使用`stateMap`。
+- 推荐的一些回调函数（或对象）的范式：`wordHandler`、`changeListener`、`getBookCallback`、`onLoad`。也可以使用其他能够表达功能的命名方式 
 - 函数或者方法推荐使用`动宾`或`动`结构，例如：
 
 ```javascript
@@ -65,37 +64,43 @@ var books = {
     }
 }
 ```
-- 比起`arrBooks`，更推荐使用`bookList`，比起`objStates`，更推荐使用`stateMap`。
-- 推荐的一些回调函数（或对象）的范式：`wordHandler`、`changeListener`、`getBookCallback`、`onLoad`。也可以使用其他能够表达功能的命名方式 
 
 
 ###分号
 
-- 推荐使用分号
+- 推荐使用分号，在必要的地方必须加上分号。例如：
+```javascript
+// 避免在文件合并时，产生错误
+;
+(function () {
+    // code
+})
+```
 
 ###等值比较
 
-- 推荐使用===和!==操作符；特别地，不要使用==来和"假"值做比较。
+- 推荐使用`===`和`!==`操作符；特别地，不要使用==来和"假"值做比较；
+- 在使用`==`、`!=`的地方必须做到心中有数，注释清楚。
 
 ###异常
 
-- 可以使用异常
-- 可以使用自定义异常，但必须输出清晰的可读的异常信息
+- 可以使用异常；
+- 可以使用自定义异常，但必须输出清晰的异常信息。
 
 ###标准特性
 
-- 不允许使用非标准的特性
-- 优先使用标准特性，最大化可移植性和兼容性，尽量使用标准方法。例如优先使用`string.charAt(3)`，而不使用`string[3]`
-- 慎用`JavaScript 1.5`以上的新特性，以[1.5](http://en.wikipedia.org/wiki/JavaScript#Versions)为准，example；`trim`。
+- 不允许使用非标准特性；
+- 优先使用标准特性和方法，最大化可移植性和兼容性。例如优先使用`string.charAt(3)`，而不使用`string[3]`；
+- 慎用`JavaScript 1.5`以上的新特性，以[1.5](http://en.wikipedia.org/wiki/JavaScript#Versions)为准，例如慎用；`String.prototype.trim`。
 
-###内置对象原型
+###修改内置对象
 
-- 不允许修改内置对象的原型
-- 框架开发中如何能够完美实现现有标准，可修改内置对象原型，可参考[MDC](https://developer.mozilla.org/en/docs/JavaScript)。
+- 不允许对内置的对象（例如内置对象的原型方法等）进行修改；
+- 框架开发中如何能够完美实现现有标准，方可修改，可参考[MDC](https://developer.mozilla.org/en/docs/JavaScript)。
 
 ###eval
 
-- 只用于解析序列化字符串，处理XHR等从服务端请求得到的返回值
+- 只用于解析序列化字符串，处理XHR等从服务端请求得到的返回值。
 
 ###caller & callee
 
@@ -107,11 +112,11 @@ var books = {
 
 ###this
 
-- 仅在对象构造器、方法和毕包中使用`this`
+- 仅在对象构造器、方法和毕包中使用`this`。
 
-###for-in迭代
+###for-in
 
-- 只使用`for-in`来迭代`Object`，即所谓的`Map`或者`Hash`。用来迭代`Array`有时候会有问题：
+- `for-in`只用来迭代`Object`，即所谓的`Map`或者`Hash`。禁止用来迭代`Array`：
 
 ```javascript
 function printArray(arr) {
@@ -163,6 +168,9 @@ list['travel'] = function (travler) {
         travler(this[i])
     }
 }
+list.travel(function (item) {
+    console.log(item)
+})
 
 // 推荐
 function travelArray(list, traveler) {
@@ -172,6 +180,9 @@ function travelArray(list, traveler) {
         traveler(list[i])
     }
 }
+travalArray(list, function (item) {
+    console.log(item)
+})
 ```
 
 ###多行字符串
@@ -191,7 +202,7 @@ var myString = 'A rather long string of English text, an error message \
 ###Ajax
 
 - 使用Ajax，必须指明是`HTTP`使用`GET`，`POST`，如果使用`GET`，必须指明是否需要`cache`。
-- 注意cache的情况
+
 
 
 ###JSON与JavaScript对象字面量
@@ -205,7 +216,7 @@ var myString = 'A rather long string of English text, an error message \
 
 - 在提交的代码中不允许出现`console`、`debugger`。
 
-###控制元素的显隐藏
+###控制元素的显隐
 
 - 使用`hide`样式来控制元素的显隐
 
@@ -217,13 +228,12 @@ var myString = 'A rather long string of English text, an error message \
 
 - 如果所使用的模板引擎有惯例，则沿用惯例，否则使用`text/dp-tpl`
 
+
+##编码风格
+
 ###引号
 
 - 字符串推荐使用单引号`'`
-
-
-
-##编码风格
 
 ###空格
 
@@ -334,7 +344,9 @@ function PR_someMethod(obj) {
 }
 ```
 
-###常见的块代码（`if/else/for/while/try`）格式（注意括号、大括号和换行）必须书写大括号
+###常见的块代码（`if/else/for/while/try`）格式
+
+-（注意括号、大括号和换行）必须书写大括号
 
 ```javascript
 //推荐的风格，有助于可读性
