@@ -1,4 +1,7 @@
-#JavaScript编码规范
+#JavaScript 编码规范
+
+##语言规范
+----------------------------------------------------
 
 ###变量
 
@@ -39,6 +42,32 @@ var
     REGEX_MATCHER_EMAIL = /```./,
     STR_WHITESPACE = " ";    // fill，优先级，规范/建议，作用域的不同要求 -> 
 ```
+
+- 常见的命名方式：`functionNamesLikeThis`, `variableNamesLikeThis`, `ClassNamesLikeThis`, `EnumNamesLikeThis`, `methodNamesLikeThis`和`SYMBOLIC_CONSTANTS_LIKE_THIS`。
+- 私有的属性、变量或者方法以“`_`”开头
+- 文件的命名包括小写字母、`-`、`_`（不能包含其他字符，且`-`优于`_`），使用`.js`结尾。
+- 不能使用拼音。
+
+###推荐命名范式
+
+- `boolean`定义：比起`bEmpty`，更推荐使用`isEmpty`,`canExit`,`hasNext`这样的命名方法。推荐使用`is`、`can`、`has`这样的前缀作为这类变量的前缀。
+- 函数或者方法推荐使用`动宾`或`动`结构，例如：
+
+```javascript
+function getBooks() {
+    //...
+}
+//or
+
+var books = {
+    get: function(){
+        //...
+    }
+}
+```
+- 比起`arrBooks`，更推荐使用`bookList`，比起`objStates`，更推荐使用`stateMap`。
+- 推荐的一些回调函数（或对象）的范式：`wordHandler`、`changeListener`、`getBookCallback`、`onLoad`。也可以使用其他能够表达功能的命名方式 
+
 
 ###分号
 
@@ -192,33 +221,8 @@ var myString = 'A rather long string of English text, an error message \
 
 - 字符串推荐使用单引号`'`
 
-
-###命名
-
-- 常见的命名方式：`functionNamesLikeThis`, `variableNamesLikeThis`, `ClassNamesLikeThis`, `EnumNamesLikeThis`, `methodNamesLikeThis`和`SYMBOLIC_CONSTANTS_LIKE_THIS`。
-- 私有的属性、变量或者方法以“`_`”开头
-- 文件的命名包括小写字母、`-`、`_`（不能包含其他字符，且`-`优于`_`），使用`.js`结尾。
-- 不能使用拼音。
-
-###推荐命名范式
-
-- `boolean`定义：比起`bEmpty`，更推荐使用`isEmpty`,`canExit`,`hasNext`这样的命名方法。推荐使用`is`、`can`、`has`这样的前缀作为这类变量的前缀。
-- 函数或者方法推荐使用`动宾`或`动`结构，例如：
-
-```javascript
-function getBooks() {
-    //...
-}
-//or
-
-var books = {
-    get: function(){
-        //...
-    }
-}
-```
-- 比起`arrBooks`，更推荐使用`bookList`，比起`objStates`，更推荐使用`stateMap`。
-- 推荐的一些回调函数（或对象）的范式：`wordHandler`、`changeListener`、`getBookCallback`、`onLoad`。也可以使用其他能够表达功能的命名方式 
+##编码风格
+--------------------------------------------------
 
 ###空格
 
@@ -329,9 +333,7 @@ function PR_someMethod(obj) {
 }
 ```
 
-###代码风格
-
-- 常见的块代码（`if/else/for/while/try`）格式（注意括号、大括号和换行）必须书写大括号
+###常见的块代码（`if/else/for/while/try`）格式（注意括号、大括号和换行）必须书写大括号
 
 ```javascript
 //推荐的风格，有助于可读性
@@ -379,7 +381,7 @@ for(var i = 0; i < 100; i++) someIterativeFn();
 
 
 ```
-- 不推荐使用前置逗号
+###不推荐使用前置逗号
 
 ```javascript
 //推荐
@@ -396,7 +398,7 @@ var hoo = {
   	,memo: "memo"
 }
 ```
-- 模块
+###模块
 
 ```javascript
 // 一个实用的模块
@@ -434,7 +436,7 @@ var hoo = {
 
 })(this);
 ```
-- 构造器
+###构造器
 
 ```javascript
 // 一个实用的构造器
