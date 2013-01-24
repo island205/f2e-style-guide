@@ -1,6 +1,5 @@
 #JavaScript 编码规范
 
-
 ##语言规范
 
 ###变量
@@ -14,7 +13,7 @@ if (x) {
     function foo() {}
 }
 ```
-- 如果确实需要在块中定义函数, 建议使用函数表达式来初始化变量:
+- 如果确实需要在块中定义函数, 建议使用函数表达式来初始化变量：
 
 ```javascript
 if (x) {
@@ -32,12 +31,16 @@ if (x) {
 
 ###命名
 
-- 常量定义使用大写字符，用下划线分隔，例如：`NAME_LIKE_THIS`；  
-- 常见的命名方式：`functionNamesLikeThis`, `variableNamesLikeThis`, `ClassNamesLikeThis`, `EnumNamesLikeThis`, `methodNamesLikeThis`和`SYMBOLIC_CONSTANTS_LIKE_THIS`。
-- 私有的属性或者方法以“`_`”开头
-- 文件的命名包括小写字母、`_`（不能包含其他字符，且`-`优于`_`），使用`.js`结尾。
-- 不能使用拼音，英文单词拼写正确；
+- 常见的命名方式：`functionNamesLikeThis`, `variableNamesLikeThis`, `ClassNamesLikeThis`, `EnumNamesLikeThis`, `methodNamesLikeThis`和`SYMBOLIC_CONSTANTS_LIKE_THIS`；
+
+- 推荐私有的属性或者方法以“`_`”开头；
+
+- 文件的命名包括小写字母、`_`（不能包含其他字符，且`-`优于`_`），使用`.js`结尾；
+
+- 禁止使用拼音，英文单词拼写正确；
+
 - 推荐使用这样的常量明明模式：`<常量类型>_<适用场景>_<具体作用>`，例如：  
+
 ```javascript
 // 正则表达式_它用来 match 字符串_match email的
 var
@@ -48,23 +51,12 @@ var
 ###推荐命名范式
 
 - `boolean`：比起`bEmpty`，更推荐使用`isEmpty`,`canExit`,`hasNext`这样的命名方法。推荐使用`is`、`can`、`has`这样的前缀作为这类变量的前缀；
+
 - 比起`arrBooks`，更推荐使用`bookList`，比起`objStates`，更推荐使用`stateMap`。
-- 推荐的一些回调函数（或对象）的范式：`wordHandler`、`changeListener`、`getBookCallback`、`onLoad`。也可以使用其他能够表达功能的命名方式 
-- 函数或者方法推荐使用`动宾`或`动`结构，例如：
 
-```javascript
-function getBooks() {
-    //...
-}
-//or
+- 推荐的一些回调函数（或对象）的范式：`wordHandler`、`changeListener`、`getBookCallback`、`onLoad`。也可以使用其他能够表达功能的命名方式 ；
 
-var books = {
-    get: function(){
-        //...
-    }
-}
-```
-
+- 函数或者方法推荐使用`动宾`或`动`结构。
 
 ###分号
 
@@ -80,22 +72,27 @@ var books = {
 ###等值比较
 
 - 推荐使用`===`和`!==`操作符；特别地，不要使用==来和"假"值做比较；
+
 - 在使用`==`、`!=`的地方必须做到心中有数，注释清楚。
 
 ###异常
 
 - 可以使用异常；
+
 - 可以使用自定义异常，但必须输出清晰的异常信息。
 
 ###标准特性
 
 - 不允许使用非标准特性；
+
 - 优先使用标准特性和方法，最大化可移植性和兼容性。例如优先使用`string.charAt(3)`，而不使用`string[3]`；
+
 - 慎用`JavaScript 1.5`以上的新特性，以[1.5](http://en.wikipedia.org/wiki/JavaScript#Versions)为准，例如慎用；`String.prototype.trim`。
 
 ###修改内置对象
 
 - 不允许对内置的对象（例如内置对象的原型方法等）进行修改；
+
 - 框架开发中如何能够完美实现现有标准，方可修改，可参考[MDC](https://developer.mozilla.org/en/docs/JavaScript)。
 
 ###eval
@@ -108,7 +105,7 @@ var books = {
 
 ###with
 
-- 禁止使用
+- 禁止使用。
 
 ###this
 
@@ -141,6 +138,7 @@ a = new Array;
 a[3] = 3;
 printArray(a); // This is wrong again.
 ```
+
 - 使用普通的`for`循环来迭代数组：
 
 ```javascript
@@ -154,7 +152,7 @@ function printArray(arr) {
 
 ###关联数组
 
-- 不推荐把数组当作Hash使用，即不推荐使用字符串key存取值。
+- 不推荐把数组当作`Hash`使用，即不推荐使用字符串`key`存取值。
 
 ```javascript
 var
@@ -187,7 +185,7 @@ travalArray(list, function (item) {
 
 ###多行字符串
 
-- 不允许像下面这边书写多行字符串，非`ECMAScript`规范：
+- 不允许使用如下方式书写多行字符串，非`ECMAScript`规范：
 
 ```javascript
 var myString = 'A rather long string of English text, an error message \
@@ -208,9 +206,14 @@ var myString = 'A rather long string of English text, an error message \
 ###JSON与JavaScript对象字面量
 
 - JSON中的对象属性必须加上双引号`"`；
+
 - JavaScript对象字面量除去以下这两种情况（必须使用引号），不允许使用关键字/保留字作为属性名：
-    - css({'float': 'left'})
-    - createElement('div', {'class': 'container'})
+
+```javascript
+dom.css({'float': 'left'})
+
+dom.createElement('div', {'class': 'container'})
+```
 
 ###console & debugger
 
@@ -218,43 +221,53 @@ var myString = 'A rather long string of English text, an error message \
 
 ###控制元素的显隐
 
-- 使用`hide`样式来控制元素的显隐
+- 使用`hide`样式来控制元素的显隐。
 
 ###dataset
 
-- 不推荐自定义属性，推荐使用`dataset`
+- 不推荐自定义属性，推荐使用`dataset`。
 
 ###template type
 
-- 如果所使用的模板引擎有惯例，则沿用惯例，否则使用`text/dp-tpl`
+- 如果所使用的模板引擎有惯例，则沿用惯例，否则使用`text/dp-tpl`。
 
 
 ##编码风格
 
 ###引号
 
-- 字符串推荐使用单引号`'`
+- 字符串推荐使用单引号`'`。
 
 ###空格
 
-- 关键字后面跟`(`(左圆括号)时应该用一个空格隔开。
-- 方法名和方法的`(`(左圆括号)之间不要有空格。这利于区分关键字和方法调用。
-- 所有的二元操作符，除了`.`(圆点)、`(`(左圆括号)和`[`(左中括号)，都应该使用一个空格来和操作数隔开。
-- 一元操作符和操作数之间不应该使用空格隔开，除了操作符是一个单词时，如`typeof`。
-- `for`语句控制部分的每个`;`(分号)应该在后面跟一个空格。
+- 关键字后面跟`(`(左圆括号)时应该用一个空格隔开；
+
+- 方法名和方法的`(`(左圆括号)之间不要有空格。这利于区分关键字和方法调用；
+
+- 所有的二元操作符，除了`.`(圆点)、`(`(左圆括号)和`[`(左中括号)，都应该使用一个空格来和操作数隔开；
+
+- 一元操作符和操作数之间不应该使用空格隔开，除了操作符是一个单词时，如`typeof`；
+
+- `for`语句控制部分的每个`;`(分号)应该在后面跟一个空格；
+
 - 每个`,`(逗号)后面应该跟一个空格。
 
 
 ###缩进
 
-- 缩进的最小单位是4个空格，尽量不要使用tab，因为tab目前的标准还不统一，不同编辑器的空格数是不同的。如果你习惯了tab，请将你的编辑器tab键的默认设置设为4个空格。
+- 缩进的最小单位是4个空格，不允许使用`tab`，请将你的编辑器`tab`键的默认设置设为4个空格。
 
 ###注释
 
-- 行内注释使用`//`，且注释号与注释内容之间必须包含一个空格，例如 `// this is a comment.`。
+- 行内注释使用`//`，且注释号与注释内容之间必须包含一个空格，例如：
+
+```javascript
+ // this is a comment.
+```
+
 - 推荐使用两种注释方式，在同一个项目中只能使用其中一种：
 
-1. [backbone](https://github.com/documentcloud/backbone/blob/master/backbone.js)所采用的`markdown`形式，可以使用 [docco](https://github.com/jashkenas/docco)生成文档:
+1. [backbone](https://github.com/documentcloud/backbone/blob/master/backbone.js)所采用的`markdown`形式，可以使用 [docco](https://github.com/jashkenas/docco)生成文档：
   
 ```javascript
 //     Backbone.js 0.9.2
@@ -301,7 +314,7 @@ var Events = Backbone.Events = {
 }
 ```
 
-2. [JSDoc](http://code.google.com/p/jsdoc-toolkit/)这种与`JavaDoc`类似的方式，例如：  
+2. [JSDoc](http://code.google.com/p/jsdoc-toolkit/)这种与`JavaDoc`类似的方式，例如：
 
 ```javascript
 // Copyright 2009 Google Inc. All Rights Reserved.
@@ -344,9 +357,9 @@ function PR_someMethod(obj) {
 }
 ```
 
-###常见的块代码（`if/else/for/while/try`）格式
+###常见的块代码（`if/else/for/while/try`）格式：
 
--（注意括号、大括号和换行）必须书写大括号
+- 注意括号、大括号和换行，必须书写大括号：
 
 ```javascript
 //推荐的风格，有助于可读性
@@ -391,10 +404,9 @@ if(condition) doSomething();
 while(condition) iterating++;
 
 for(var i = 0; i < 100; i++) someIterativeFn();
-
-
 ```
-###不推荐使用前置逗号
+
+###不推荐使用前置逗号；
 
 ```javascript
 //推荐
@@ -411,7 +423,8 @@ var hoo = {
   	,memo: "memo"
 }
 ```
-###模块
+
+###模块：
 
 ```javascript
 // 一个实用的模块
@@ -449,7 +462,8 @@ var hoo = {
 
 })(this);
 ```
-###构造器
+
+###构造器：
 
 ```javascript
 // 一个实用的构造器
@@ -486,6 +500,7 @@ var hoo = {
 - 推荐在同一个地方定义多个变量，写一个`var`，合理分组：
 
 ```javascript
+// like YUI's code
 var build = Base._build,
 
     builtClass = build._ctor(main, cfg),
@@ -501,8 +516,8 @@ var build = Base._build,
 
 ###文件
 
-- JavaScript程序应该作为一个 .js文件存储和发布，文件编码为`utf-8`。
-- JavaScript代码不应该嵌入在HTML文件里，除非这些代码是一个单独的会话特有的或者是需要有后台开发工程师进行控制的。HTML里的JavaScript代码大大增加了页面的大小，并且很难通过缓存和压缩来缓解，同时也难以通过前端来维护。
+- JavaScript程序应该作为一个 `.js`文件发布，文件编码为`utf-8`；
+- JavaScript代码不应该嵌入在`HTML`文件里，除非这些代码是一个单独的会话特有的或者是需要有后台开发工程师进行控制的。`HTML`里的JavaScript代码大大增加了页面的大小，并且很难通过缓存和压缩来缓解，同时也难以通过前端来维护；
 - JavaScript文件应该在`body`里越靠后的位置越好，最好是放在最后面。这减少了由于加载`script`而导致的其它页面组件的延迟。
 
 
