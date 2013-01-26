@@ -1,6 +1,6 @@
-#JavaScript 编码规范
+#JavaScript
 
-##语言规范
+##语言
 
 ###变量
 
@@ -236,7 +236,7 @@ dom.createElement('div', {'class': 'container'})
 - 如果所使用的模板引擎有惯例，则沿用惯例，否则使用`text/dp-tpl`。
 
 
-##编码风格
+##风格
 
 ###引号
 

@@ -1,6 +1,6 @@
 #CSS
 
-##语言规范
+##语言
 
 ###类型选择符
 
@@ -25,11 +25,6 @@ div.error {}
 - 每个属性声明后必须添加分号`;`[CSS语法](http://www.w3.org/TR/CSS21/syndata.html#q10)；
 
 - 大括号之外不能写分号`;`。
-
-###CSS3
-
-- 慎用CSS3的动画`transition`（chrome闪烁）。
-
 
 ###hack
 
@@ -72,7 +67,7 @@ div.error {}
 }
 ```
 
-##编码风格
+##风格
 
 ###格式
 

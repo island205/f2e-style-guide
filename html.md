@@ -1,6 +1,6 @@
-#HTML 编码规范
+#HTML
 
-##语言规范
+##语言
 
 ###DOCTYPE
 
@@ -132,7 +132,7 @@
 <input type="text" name="bar" readony />
 ```
 
-##编码风格
+##风格
 
 #####格式化
 
