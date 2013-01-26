@@ -1,4 +1,4 @@
-#Geting start with JSHint
+#GETING START WITH JSHINT
 
 > JSHint是一个优秀的JavaScript代码检查工具，使用它能够规范代码的编写，可以保持一个良好的代码风格。基于[前端开发规范](https://github.com/island205/codingguide/blob/master/README.md)，结合JSHint的可配置项，我们使用如下的规则对代码进行检查：
 
@@ -166,8 +166,3 @@
 
 - https://github.com/jshint/jshint
 - https://github.com/uipoet/sublime-jshint
-
-###vim
-
-再续……
-

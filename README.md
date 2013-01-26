@@ -1,9 +1,9 @@
-#编码规范
+#前端编码规范
 
 ##目录
 
-1. [JavaScript](https://github.com/island205/styleguide/blob/master/javascript.md)
+1. [JAVASCRIPT](https://github.com/island205/styleguide/blob/master/javascript.md)
 
-2. [html](https://github.com/island205/styleguide/blob/master/html.md)
+2. [HTML](https://github.com/island205/styleguide/blob/master/html.md)
 
-3. [css](https://github.com/island205/styleguide/blob/master/css.md)
+3. [CSS](https://github.com/island205/styleguide/blob/master/css.md)
